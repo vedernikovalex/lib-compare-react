@@ -1,0 +1,18 @@
+{
+  "name": "lib-compare-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:vedernikovalex/lib-compare-react.git",
+  "author": "Alexander Vedernikov <vedurnikof@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach --parallel run build",
+    "lint": "yarn workspaces foreach --parallel run lint",
+    "test": "yarn workspaces foreach --parallel run test"
+  }
+}

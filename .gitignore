@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# workspace ignores
+apps/*/node_modules
+apps/*/dist
+apps/*/build
+apps/*/.env
+apps/*/.DS_Store
+apps/*/*.tsbuildinfo
