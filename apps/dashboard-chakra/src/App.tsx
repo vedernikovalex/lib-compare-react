@@ -1,6 +1,6 @@
 import { Box, Heading, Container } from "@chakra-ui/react";
 
-export default function App() {
+const App = () => {
   return (
     <Container maxW="6xl" py={8}>
       <Heading as="h1" size="lg" mb={4}>
@@ -18,4 +18,6 @@ export default function App() {
       </Box>
     </Container>
   );
-}
+};
+
+export default App;

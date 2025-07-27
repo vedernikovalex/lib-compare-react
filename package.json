@@ -2,6 +2,7 @@
   "name": "lib-compare-react",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "git@github.com:vedernikovalex/lib-compare-react.git",
   "author": "Alexander Vedernikov <vedurnikof@gmail.com>",
   "license": "MIT",
@@ -11,8 +12,18 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --parallel run build",
-    "lint": "yarn workspaces foreach --parallel run lint",
-    "test": "yarn workspaces foreach --parallel run test"
+    "build": "yarn workspaces run --parallel build",
+    "lint": "yarn workspaces run --parallel lint",
+    "test": "yarn workspaces run --parallel test",
+    "dev:all": "concurrently \"yarn workspace dashboard-mui dev\" \"yarn workspace dashboard-antd dev\" \"yarn workspace dashboard-chakra dev\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "concurrently": "^9.2.0"
+  },
+  "dependencies": {
+    "eslint": "^9.32.0",
+    "eslint-plugin-react": "^7.37.5"
   }
 }

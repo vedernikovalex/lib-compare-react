@@ -1,6 +1,6 @@
 import { Container, Typography } from "@mui/material";
 
-export default function App() {
+const App = () => {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h4" gutterBottom>
@@ -8,4 +8,6 @@ export default function App() {
       </Typography>
     </Container>
   );
-}
+};
+
+export default App;
