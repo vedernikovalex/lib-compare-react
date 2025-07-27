@@ -2,7 +2,14 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "baseUrl": "./src"
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["../../packages/shared/*"]
+    }
   },
-  "include": ["src"]
+  "exclude": [
+    "../dashboard-antd",
+    "../dashboard-mui",
+    "../../packages/shared/dist"
+  ]
 }

@@ -42,3 +42,11 @@ apps/*/build
 apps/*/.env
 apps/*/.DS_Store
 apps/*/*.tsbuildinfo
+
+# packages ignores
+/packages/*/node_modules
+/packages/*/dist
+/packages/*/build
+/packages/*/.env
+/packages/*/.DS_Store
+/packages/*/*.tsbuildinfo
