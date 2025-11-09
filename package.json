@@ -18,9 +18,11 @@
     "dev:all": "concurrently \"yarn workspace dashboard-mui dev\" \"yarn workspace dashboard-antd dev\" \"yarn workspace dashboard-chakra dev\""
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.38.0",
-    "@typescript-eslint/parser": "^8.38.0",
-    "concurrently": "^9.2.0"
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.3",
+    "@typescript-eslint/parser": "^8.46.3",
+    "concurrently": "^9.2.0",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "eslint": "^9.32.0",

@@ -1,0 +1,24 @@
+{
+  "homepage": {
+    "intro": {
+      "description": "This dashboard collects functional parity, performance measurements, accessibility checks, and bundle size reports for the reference applications."
+    },
+    "section": {
+      "whatYouWillFind": "What you will find here"
+    },
+    "highlights": {
+      "featureParity": {
+        "title": "Feature Parity",
+        "description": "Track implementation status across all UI libraries."
+      },
+      "performanceBenchmarks": {
+        "title": "Performance Benchmarks",
+        "description": "Review the latest Lighthouse metrics for each app."
+      },
+      "accessibilityGoals": {
+        "title": "Accessibility Goals",
+        "description": "Verify automation results and manual WCAG notes."
+      }
+    }
+  }
+}

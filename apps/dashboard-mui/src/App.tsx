@@ -1,15 +1,9 @@
 import { Container, Typography } from "@mui/material";
 import SharedHello from "../../../packages/shared/src/components/SharedHello";
+import Homepage from "./pages/Homepage";
 
 const App = () => {
-  return (
-    <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Typography variant="h4" gutterBottom>
-        Demo MUI Dashboard
-        <SharedHello text="MUI World!" />
-      </Typography>
-    </Container>
-  );
+  return <Homepage />;
 };
 
 export default App;

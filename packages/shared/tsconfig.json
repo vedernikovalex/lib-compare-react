@@ -14,6 +14,8 @@
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "target": "es5",
     "skipLibCheck": true
