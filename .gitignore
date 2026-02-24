@@ -55,3 +55,9 @@ apps/*/*.tsbuildinfo
 /.yarn/unplugged/
 /.yarn/build-state.yml
 /.yarn/install-state.gz
+
+# claude code session data
+.claude/
+
+# ai planning artifacts
+docs/plans/

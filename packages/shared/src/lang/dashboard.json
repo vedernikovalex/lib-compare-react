@@ -1,0 +1,37 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "kpi": {
+      "totalRevenue": "Total Revenue",
+      "activeProducts": "Active Products",
+      "totalUnits": "Total Units",
+      "avgOrderValue": "Avg. Order Value",
+      "vsPrevPeriod": "vs previous period"
+    },
+    "table": {
+      "title": "Product Sales",
+      "searchPlaceholder": "Search products...",
+      "columns": {
+        "name": "Product",
+        "category": "Category",
+        "status": "Status",
+        "revenue": "Revenue",
+        "units": "Units",
+        "createdAt": "Created"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "pending": "Pending"
+      },
+      "pagination": {
+        "rowsPerPage": "Rows per page",
+        "of": "of"
+      }
+    },
+    "chart": {
+      "revenueTitle": "Revenue — last 60 days",
+      "categoryTitle": "Revenue by category"
+    }
+  }
+}

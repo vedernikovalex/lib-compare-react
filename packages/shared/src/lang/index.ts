@@ -1,9 +1,15 @@
 import global from "./global.json";
 import homepage from "./homepage.json";
+import nav from "./nav.json";
+import dashboard from "./dashboard.json";
+import kanban from "./kanban.json";
 
 const translationTree = {
   ...global,
   ...homepage,
+  ...nav,
+  ...dashboard,
+  ...kanban,
 } as const;
 
 type TranslationTree = typeof translationTree;
@@ -26,7 +32,7 @@ type TranslationMap = Record<TranslationKey, string>;
 
 const flatten = (
   tree: Record<string, unknown>,
-  parentKey = ""
+  parentKey = "",
 ): TranslationMap => {
   return Object.entries(tree).reduce<TranslationMap>((acc, [key, value]) => {
     const composedKey = parentKey ? `${parentKey}.${key}` : key;

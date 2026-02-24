@@ -1,9 +1,21 @@
-import { Container, Typography } from "@mui/material";
-import SharedHello from "../../../packages/shared/src/components/SharedHello";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./components/AppLayout";
 import Homepage from "./pages/Homepage";
+import DashboardPage from "./pages/DashboardPage";
+import KanbanPage from "./pages/KanbanPage";
 
 const App = () => {
-  return <Homepage />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/kanban" element={<KanbanPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;

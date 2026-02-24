@@ -1,0 +1,26 @@
+{
+  "kanban": {
+    "title": "Kanban Board",
+    "columns": {
+      "todo": "To Do",
+      "inProgress": "In Progress",
+      "done": "Done"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "modal": {
+      "title": "Edit Card",
+      "fields": {
+        "title": "Title",
+        "description": "Description",
+        "priority": "Priority",
+        "assignee": "Assignee"
+      },
+      "save": "Save",
+      "cancel": "Cancel"
+    }
+  }
+}

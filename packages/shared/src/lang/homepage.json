@@ -1,23 +1,49 @@
 {
   "homepage": {
     "intro": {
-      "description": "This dashboard collects functional parity, performance measurements, accessibility checks, and bundle size reports for the reference applications."
+      "description": "A bachelor's thesis reference app that implements the same dashboard three times — once per library — to compare performance, accessibility, developer experience, ecosystem, and theming."
     },
-    "section": {
-      "whatYouWillFind": "What you will find here"
+    "libraries": {
+      "title": "Three libraries, one app",
+      "mui": {
+        "name": "MUI v7",
+        "description": "Material Design components with a rich ecosystem and strong TypeScript support."
+      },
+      "antd": {
+        "name": "Ant Design v5",
+        "description": "Enterprise-grade component suite with comprehensive built-ins and documentation."
+      },
+      "chakra": {
+        "name": "Chakra UI v3",
+        "description": "Composable, accessibility-first primitives with flexible prop-based styling."
+      }
     },
-    "highlights": {
-      "featureParity": {
-        "title": "Feature Parity",
-        "description": "Track implementation status across all UI libraries."
+    "criteria": {
+      "title": "Evaluation criteria",
+      "performance": {
+        "label": "Performance",
+        "weight": "43%",
+        "description": "Core Web Vitals, Lighthouse scores, bundle size."
       },
-      "performanceBenchmarks": {
-        "title": "Performance Benchmarks",
-        "description": "Review the latest Lighthouse metrics for each app."
+      "accessibility": {
+        "label": "Accessibility",
+        "weight": "28%",
+        "description": "WCAG 2.1 AA compliance, automated axe audit, NVDA screen reader testing."
       },
-      "accessibilityGoals": {
-        "title": "Accessibility Goals",
-        "description": "Verify automation results and manual WCAG notes."
+      "dx": {
+        "label": "Developer Experience",
+        "weight": "16%",
+        "description": "API ergonomics, TypeScript support, documentation quality."
+      },
+      "ecosystem": {
+        "label": "Ecosystem",
+        "weight": "8%",
+        "description": "Community size, third-party integrations, release cadence."
+      },
+      "theming": {
+        "label": "Theming & i18n",
+        "weight": "5%",
+        "description": "Customisation capability and internationalisation support."
       }
     }
   }

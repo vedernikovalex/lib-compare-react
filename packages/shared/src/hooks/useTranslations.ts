@@ -11,7 +11,7 @@ type Translator<N extends TranslationNamespace | undefined> = N extends string
   : (key: TranslationKey) => string;
 
 export const useTranslations = <N extends TranslationNamespace | undefined>(
-  namespace?: N
+  namespace?: N,
 ) => {
   const translate = useCallback(
     (rawKey: string) => {
@@ -28,7 +28,7 @@ export const useTranslations = <N extends TranslationNamespace | undefined>(
 
       return rawKey;
     },
-    [namespace]
+    [namespace],
   );
 
   return { t: translate as Translator<N> };

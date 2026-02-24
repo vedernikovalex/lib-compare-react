@@ -3,8 +3,8 @@
     "appTitle": "React UI Library Benchmark",
     "appTagline": "Compare MUI, Ant Design, and Chakra side by side.",
     "cta": {
-      "viewMeasurementProtocol": "View Measurement Protocol",
-      "browseLatestResults": "Browse Latest Results"
+      "goToDashboard": "Go to Dashboard",
+      "goToKanban": "Go to Kanban"
     }
   }
 }

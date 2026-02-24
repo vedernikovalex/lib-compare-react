@@ -7,20 +7,29 @@ import {
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { highlightKeys } from "@shared/src/data/homepage.data";
 import { useTranslations } from "@shared/src/hooks/useTranslations";
+import { useNavigate } from "react-router-dom";
+
+const libraryKeys = ["mui", "antd", "chakra"] as const;
+type LibraryKey = (typeof libraryKeys)[number];
+
+const criteriaKeys = [
+  "performance",
+  "accessibility",
+  "dx",
+  "ecosystem",
+  "theming",
+] as const;
+type CriterionKey = (typeof criteriaKeys)[number];
 
 const HomePage = () => {
   const { t } = useTranslations("homepage");
   const { t: tGlobal } = useTranslations("global");
-
-  const typedKeys = highlightKeys as Array<
-    "featureParity" | "performanceBenchmarks" | "accessibilityGoals"
-  >;
+  const navigate = useNavigate();
 
   return (
     <Container maxW="container.lg" py={{ base: 12, md: 16 }}>
-      <Flex direction="column" gap={10}>
+      <Flex direction="column" gap={12}>
         <Flex direction="column" gap={4}>
           <Text textTransform="uppercase" color="gray.500" fontWeight="medium">
             {tGlobal("appTitle")}
@@ -30,35 +39,66 @@ const HomePage = () => {
           </Heading>
           <Text color="gray.400">{t("intro.description")}</Text>
           <Flex direction={{ base: "column", sm: "row" }} gap={4}>
-            <Button colorScheme="purple">
-              {tGlobal("cta.viewMeasurementProtocol")}
+            <Button
+              colorPalette="purple"
+              onClick={() => navigate("/dashboard")}
+            >
+              {tGlobal("cta.goToDashboard")}
             </Button>
-            <Button variant="outline">
-              {tGlobal("cta.browseLatestResults")}
+            <Button variant="outline" onClick={() => navigate("/kanban")}>
+              {tGlobal("cta.goToKanban")}
             </Button>
           </Flex>
         </Flex>
 
-        <Box borderWidth="1px" borderRadius="lg" p={{ base: 6, md: 8 }}>
-          <Flex direction="column" gap={6}>
-            <Heading as="h2" size="md">
-              {t("section.whatYouWillFind")}
-            </Heading>
-            <Box height="1px" bg="whiteAlpha.300" />
-            <SimpleGrid columns={{ base: 1, md: 3 }} gap={6}>
-              {typedKeys.map((key) => (
-                <Flex key={key} direction="column" gap={2}>
+        <Flex direction="column" gap={4}>
+          <Heading as="h2" size="lg">
+            {t("libraries.title")}
+          </Heading>
+          <SimpleGrid columns={{ base: 1, md: 3 }} gap={4}>
+            {libraryKeys.map((key: LibraryKey) => (
+              <Box
+                key={key}
+                borderWidth="1px"
+                borderRadius="lg"
+                p={5}
+                height="100%"
+              >
+                <Flex direction="column" gap={2}>
                   <Heading as="h3" size="sm">
-                    {t(`highlights.${key}.title`)}
+                    {t(`libraries.${key}.name`)}
                   </Heading>
                   <Text color="gray.400">
-                    {t(`highlights.${key}.description`)}
+                    {t(`libraries.${key}.description`)}
                   </Text>
                 </Flex>
-              ))}
-            </SimpleGrid>
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Flex>
+
+        <Flex direction="column" gap={4}>
+          <Heading as="h2" size="lg">
+            {t("criteria.title")}
+          </Heading>
+          <Flex direction="column" gap={2}>
+            {criteriaKeys.map((key: CriterionKey) => (
+              <Box key={key} borderWidth="1px" borderRadius="md" px={4} py={3}>
+                <Flex gap={4} align="baseline">
+                  <Text fontWeight="semibold" minWidth="160px">
+                    {t(`criteria.${key}.label`)}
+                  </Text>
+                  <Text fontWeight="bold" color="purple.400" minWidth="48px">
+                    {t(`criteria.${key}.weight`)}
+                  </Text>
+                  <Text color="gray.400">
+                    {t(`criteria.${key}.description`)}
+                  </Text>
+                </Flex>
+              </Box>
+            ))}
           </Flex>
-        </Box>
+        </Flex>
       </Flex>
     </Container>
   );

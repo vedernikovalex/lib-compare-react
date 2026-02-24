@@ -1,21 +1,30 @@
-import { Button, Card, Divider, Flex, List, Typography } from "antd";
-import { highlightKeys } from "@shared/src/data/homepage.data";
+import { Button, Card, Col, Flex, Row, Typography } from "antd";
 import { useTranslations } from "@shared/src/hooks/useTranslations";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text } = Typography;
+
+const libraryKeys = ["mui", "antd", "chakra"] as const;
+type LibraryKey = (typeof libraryKeys)[number];
+
+const criteriaKeys = [
+  "performance",
+  "accessibility",
+  "dx",
+  "ecosystem",
+  "theming",
+] as const;
+type CriterionKey = (typeof criteriaKeys)[number];
 
 const HomePage = () => {
   const { t } = useTranslations("homepage");
   const { t: tGlobal } = useTranslations("global");
-
-  const typedKeys = highlightKeys as Array<
-    "featureParity" | "performanceBenchmarks" | "accessibilityGoals"
-  >;
+  const navigate = useNavigate();
 
   return (
     <Flex
       vertical
-      gap={32}
+      gap={48}
       style={{ padding: "48px 24px", maxWidth: 960, margin: "0 auto" }}
     >
       <Flex vertical gap={16}>
@@ -25,37 +34,57 @@ const HomePage = () => {
         </Title>
         <Text type="secondary">{t("intro.description")}</Text>
         <Flex gap={16} wrap>
-          <Button type="primary">
-            {tGlobal("cta.viewMeasurementProtocol")}
+          <Button type="primary" onClick={() => navigate("/dashboard")}>
+            {tGlobal("cta.goToDashboard")}
           </Button>
-          <Button>{tGlobal("cta.browseLatestResults")}</Button>
+          <Button onClick={() => navigate("/kanban")}>
+            {tGlobal("cta.goToKanban")}
+          </Button>
         </Flex>
       </Flex>
 
-      <Card bordered>
-        <Flex vertical gap={16}>
-          <Title level={4} style={{ margin: 0 }}>
-            {t("section.whatYouWillFind")}
-          </Title>
-          <Divider style={{ margin: 0 }} />
-          <List
-            dataSource={typedKeys}
-            grid={{ gutter: 16, xs: 1, sm: 1, md: 3 }}
-            renderItem={(key) => (
-              <List.Item key={key}>
+      <Flex vertical gap={16}>
+        <Title level={4} style={{ margin: 0 }}>
+          {t("libraries.title")}
+        </Title>
+        <Row gutter={[16, 16]}>
+          {libraryKeys.map((key: LibraryKey) => (
+            <Col xs={24} sm={8} key={key}>
+              <Card bordered style={{ height: "100%" }}>
                 <Flex vertical gap={8}>
                   <Title level={5} style={{ margin: 0 }}>
-                    {t(`highlights.${key}.title`)}
+                    {t(`libraries.${key}.name`)}
                   </Title>
                   <Text type="secondary">
-                    {t(`highlights.${key}.description`)}
+                    {t(`libraries.${key}.description`)}
                   </Text>
                 </Flex>
-              </List.Item>
-            )}
-          />
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Flex>
+
+      <Flex vertical gap={16}>
+        <Title level={4} style={{ margin: 0 }}>
+          {t("criteria.title")}
+        </Title>
+        <Flex vertical gap={8}>
+          {criteriaKeys.map((key: CriterionKey) => (
+            <Card bordered key={key} size="small">
+              <Flex gap={16} align="baseline">
+                <Text strong style={{ minWidth: 160 }}>
+                  {t(`criteria.${key}.label`)}
+                </Text>
+                <Text strong type="success" style={{ minWidth: 48 }}>
+                  {t(`criteria.${key}.weight`)}
+                </Text>
+                <Text type="secondary">{t(`criteria.${key}.description`)}</Text>
+              </Flex>
+            </Card>
+          ))}
         </Flex>
-      </Card>
+      </Flex>
     </Flex>
   );
 };
