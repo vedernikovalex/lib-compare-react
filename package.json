@@ -12,17 +12,21 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces run --parallel build",
-    "lint": "yarn workspaces run --parallel lint",
-    "test": "yarn workspaces run --parallel test",
-    "dev:all": "concurrently \"yarn workspace dashboard-mui dev\" \"yarn workspace dashboard-antd dev\" \"yarn workspace dashboard-chakra dev\""
+    "build": "concurrently \"yarn workspace dashboard-antd build\" \"yarn workspace dashboard-chakra build\" \"yarn workspace dashboard-mui build\"",
+    "lint": "concurrently \"yarn workspace dashboard-antd lint\" \"yarn workspace dashboard-chakra lint\" \"yarn workspace dashboard-mui lint\"",
+    "test": "concurrently \"yarn workspace dashboard-antd test\" \"yarn workspace dashboard-chakra test\" \"yarn workspace dashboard-mui test\"",
+    "dev:all": "concurrently \"yarn workspace dashboard-mui dev\" \"yarn workspace dashboard-antd dev\" \"yarn workspace dashboard-chakra dev\"",
+    "preview:all": "concurrently \"yarn workspace dashboard-antd preview\" \"yarn workspace dashboard-chakra preview\" \"yarn workspace dashboard-mui preview\"",
+    "lhci:collect": "lhci collect",
+    "lhci:report": "lhci open"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "@types/node": "^22.10.2",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
     "concurrently": "^9.2.0",
-    "typescript": "^5.9.3"
+"typescript": "^5.9.3"
   },
   "dependencies": {
     "eslint": "^9.32.0",

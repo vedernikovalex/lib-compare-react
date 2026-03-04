@@ -20,13 +20,16 @@ Build the same dashboard application three times — once with MUI v7, once with
 
 | Criterion | Weight |
 |---|---|
-| Performance (Core Web Vitals, Lighthouse) | 43% |
-| Accessibility (WCAG 2.1 AA, axe, NVDA) | 28% |
-| Developer Experience | 16% |
-| Ecosystem | 8% |
-| Theming & i18n | 5% |
+| Performance & Bundle Size (Core Web Vitals, Lighthouse CI, source-map-explorer) | 30% |
+| Accessibility (WCAG 2.1 AA, axe-core, NVDA, keyboard navigation) | 25% |
+| Developer Experience (TypeScript quality, API consistency, documentation) | 22% |
+| Theming & Customization (token depth, overrides, dark mode, slot APIs) | 12% |
+| Ecosystem & Community (component count, npm downloads, GitHub activity) | 8% |
+| Internationalization (RTL support, locale formatting, translation integration) | 3% |
 
 Scoring: 1–10 per criterion × weight → overall score per library.
+
+See `docs/metrics/metrics_first_iteration.md` for full rationale.
 
 ---
 
@@ -38,22 +41,23 @@ Scoring: 1–10 per criterion × weight → overall score per library.
 - [x] Homepage in all 3 apps with parity
 - [x] Type-safe translation system (`useTranslations`)
 
-### Phase 2 — Feature Build (current focus)
-- [ ] `tokens.json` + theme adapters (all 3 apps)
-- [ ] Routing setup (`react-router-dom` in all 3 apps)
-- [ ] Shared types for Dashboard data and Kanban items (`packages/shared/src/types/`)
-- [ ] Shared data fixtures (200+ table rows, 60-day time series) in `packages/shared/src/data/`
-- [ ] Install shared utility deps in all 3 apps: `@tanstack/react-table`, `@dnd-kit/core`, `recharts`
-- [ ] Dashboard page: KPI cards, filterable/sortable table, line + bar charts
-- [ ] Kanban page: DnD columns (Todo / In Progress / Done), card edit modal
+### Phase 2 — Feature Build (COMPLETE)
+- [x] `tokens.json` + theme adapters (all 3 apps)
+- [x] Routing setup (`react-router-dom` in all 3 apps)
+- [x] Shared types for Dashboard data and Kanban items (`packages/shared/src/types/`)
+- [x] Shared data fixtures (200+ table rows, 60-day time series) in `packages/shared/src/data/`
+- [x] Install shared utility deps in all 3 apps: `@tanstack/react-table`, `@dnd-kit/core`, `recharts`
+- [x] Dashboard page: KPI cards, filterable/sortable table, line + bar charts
+- [x] Kanban page: DnD columns (Todo / In Progress / Done), card edit modal
 
-### Phase 3 — Measurement (after features)
-- [ ] Lighthouse CI configuration (`lighthouserc.json`)
-- [ ] Bundle analysis scripts (`source-map-explorer`)
+### Phase 3 — Measurement (current focus)
+- [x] `docs/versions.md` — pin exact library versions at time of measurement
+- [x] `docs/a11y-checklist.md` — WCAG 2.1 AA + screen reader checklist template
+- [x] Lighthouse CI configuration (`lighthouserc.json`) + `@lhci/cli` installed
+- [x] Bundle analysis scripts (`source-map-explorer`) added to each app
+- [ ] React Profiler interaction benchmark scripts
 - [ ] Playwright + `@axe-core/playwright` a11y tests per app
-- [ ] `docs/measurement-protocol.md`
-- [ ] `docs/versions.md`
-- [ ] `docs/a11y-checklist.md`
+- [ ] `docs/measurement-protocol.md` (DONE — see file)
 
 ### Phase 4 — Results & Documentation
 - [ ] Run all measurements, store artifacts in `docs/results/`

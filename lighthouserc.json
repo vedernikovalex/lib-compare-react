@@ -1,0 +1,34 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "settings": {
+        "preset": "desktop",
+        "onlyCategories": ["performance", "accessibility"],
+        "skipAudits": ["uses-http2"],
+        "throttlingMethod": "simulate",
+        "throttling": {
+          "cpuSlowdownMultiplier": 4,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0
+        }
+      },
+      "url": [
+        "http://localhost:3001/",
+        "http://localhost:3001/dashboard",
+        "http://localhost:3001/kanban",
+        "http://localhost:3002/",
+        "http://localhost:3002/dashboard",
+        "http://localhost:3002/kanban",
+        "http://localhost:3003/",
+        "http://localhost:3003/dashboard",
+        "http://localhost:3003/kanban"
+      ]
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": "docs/results/lhci"
+    }
+  }
+}

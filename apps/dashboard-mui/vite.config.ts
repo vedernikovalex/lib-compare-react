@@ -11,6 +11,7 @@ const __dirname = dirname(__filename);
 export default defineConfig({
   plugins: [react()],
   server: { port: 3003 },
+  preview: { port: 3003 },
   resolve: {
     alias: {
       "@shared": resolve(__dirname, "../../packages/shared"),

@@ -61,3 +61,13 @@ apps/*/*.tsbuildinfo
 
 # ai planning artifacts
 docs/plans/
+
+# lighthouse ci staging area (transient, cleared before each run)
+.lighthouseci/
+
+# lighthouse raw report files (large, generated — keep only summary.md)
+docs/lighthouse/**/lhr-*.html
+docs/lighthouse/**/lhr-*.json
+
+# bundle analysis html reports (generated, large)
+docs/bundles/

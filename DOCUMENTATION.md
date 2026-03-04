@@ -12,13 +12,16 @@ A bachelor's thesis comparing three React UI libraries — MUI v7, Ant Design v5
 
 | Criterion | Weight |
 |---|---|
-| Performance (Core Web Vitals, Lighthouse) | 43% |
-| Accessibility (WCAG 2.1 AA, axe, NVDA) | 28% |
-| Developer Experience | 16% |
-| Ecosystem | 8% |
-| Theming & i18n | 5% |
+| Performance & Bundle Size (Core Web Vitals, Lighthouse CI, source-map-explorer) | 30% |
+| Accessibility (WCAG 2.1 AA, axe-core, NVDA, keyboard navigation) | 25% |
+| Developer Experience (TypeScript quality, API consistency, documentation) | 22% |
+| Theming & Customization (token depth, overrides, dark mode, slot APIs) | 12% |
+| Ecosystem & Community (component count, npm downloads, GitHub activity) | 8% |
+| Internationalization (RTL support, locale formatting, translation integration) | 3% |
 
 Scoring: 1–10 per criterion × weight → overall score per library.
+
+See `docs/metrics/metrics_first_iteration.md` for full rationale and change history.
 
 ---
 
@@ -78,21 +81,26 @@ Planned shared utility libraries (not yet installed):
 
 ```
 packages/shared/src/
-├── components/
-│   └── SharedHello.tsx      # Scaffold artifact (unused)
 ├── data/
-│   └── homepage.data.ts     # highlightKeys array
+│   ├── homepage.data.ts      # highlightKeys array
+│   ├── dashboard.data.ts     # 210 table rows, 4 KPI items, 60-day time series, category revenue
+│   └── kanban.data.ts        # 15 initial cards, 3 column definitions
 ├── hooks/
-│   └── useTranslations.ts   # Type-safe translation hook
-└── lang/
-    ├── global.json           # Global-scope translations
-    ├── homepage.json         # Homepage-scope translations
-    └── index.ts              # Flattening, type derivation, exports
+│   └── useTranslations.ts    # Type-safe translation hook
+├── lang/
+│   ├── global.json           # Global-scope translations
+│   ├── homepage.json         # Homepage-scope translations
+│   ├── nav.json              # Navigation labels (home, dashboard, kanban)
+│   ├── dashboard.json        # Dashboard page translations (KPI labels, table columns, chart titles)
+│   ├── kanban.json           # Kanban page translations (columns, priority, modal fields)
+│   └── index.ts              # Flattening, type derivation, exports
+├── theme/
+│   └── tokens.json           # Design tokens: colors, spacing, borderRadius, fontSize, shadow
+└── types/
+    ├── dashboard.types.ts    # DashboardRow, KpiData, TimeSeriesPoint, CategoryRevenue, enums
+    ├── kanban.types.ts       # KanbanCard, KanbanColumnDef, KanbanColumnId, KanbanPriority
+    └── index.ts              # Re-exports all types
 ```
-
-**Planned additions:**
-- `src/types/` — shared TypeScript interfaces (DashboardRow, KanbanCard, etc.)
-- `src/theme/tokens.json` — design tokens (colors, spacing, radius, typography)
 
 **How apps import from shared:**
 
@@ -201,14 +209,14 @@ Same paths in all three apps:
 | Route | Status | Description |
 |---|---|---|
 | `/` | DONE | Homepage — app intro, highlights, CTAs |
-| `/dashboard` | TODO | KPI cards, filterable/sortable table, line + bar charts |
-| `/kanban` | TODO | DnD board (Todo / In Progress / Done), card edit modal |
+| `/dashboard` | DONE | KPI cards, filterable/sortable table, line + bar charts |
+| `/kanban` | DONE | DnD board (Todo / In Progress / Done), card edit modal |
 
 ---
 
-## 9. Theme System (planned)
+## 9. Theme System
 
-Single source of truth: `packages/shared/src/theme/tokens.json` (colors, spacing, radius, typography scale).
+Single source of truth: `packages/shared/src/theme/tokens.json` (colors, spacing, radius, typography scale, shadow).
 
 Each app has an adapter that maps tokens to its library's theming API:
 
@@ -216,7 +224,7 @@ Each app has an adapter that maps tokens to its library's theming API:
 |---|---|---|
 | dashboard-mui | `src/theme/muiTheme.ts` | `createTheme()` |
 | dashboard-antd | `src/theme/antdTheme.ts` | `ConfigProvider` config object |
-| dashboard-chakra | `src/theme/chakraTheme.ts` | `extendTheme()` |
+| dashboard-chakra | `src/theme/chakraTheme.ts` | `createSystem(defaultConfig, {...})` — Chakra v3 API (not `extendTheme`) |
 
 No hardcoded color/spacing/font values in component files — all values come through the theme adapter.
 
