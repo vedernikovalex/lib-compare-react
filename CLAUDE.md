@@ -50,18 +50,25 @@ See `docs/metrics/metrics_first_iteration.md` for full rationale.
 - [x] Dashboard page: KPI cards, filterable/sortable table, line + bar charts
 - [x] Kanban page: DnD columns (Todo / In Progress / Done), card edit modal
 
-### Phase 3 — Measurement (current focus)
+### Phase 3 — Measurement (COMPLETE)
 - [x] `docs/versions.md` — pin exact library versions at time of measurement
-- [x] `docs/a11y-checklist.md` — WCAG 2.1 AA + screen reader checklist template
-- [x] Lighthouse CI configuration (`lighthouserc.json`) + `@lhci/cli` installed
-- [x] Bundle analysis scripts (`source-map-explorer`) added to each app
-- [ ] React Profiler interaction benchmark scripts
-- [ ] Playwright + `@axe-core/playwright` a11y tests per app
-- [ ] `docs/measurement-protocol.md` (DONE — see file)
+- [x] `docs/measurement-protocol.md` — sub-criteria definitions and measurement steps
+- [x] `docs/a11y-checklist.md` — WCAG 2.1 AA + screen reader checklist (all parts filled)
+- [x] Lighthouse CI configuration (`lighthouserc.json`) + `@lhci/cli` installed; 2 runs completed
+- [x] Bundle analysis (`rollup-plugin-visualizer`) — results in `docs/bundles/summary.md`
+- [x] axe-core automated scans (`@axe-core/cli`, 9 URLs) → `docs/results/2026-03-04/axe-summary.md`
+- [x] WCAG 2.1 AA manual checklist — all 10 sections completed across all 3 apps
+- [x] VoiceOver screen reader spot-check — Part 3 of `docs/a11y-checklist.md` filled
+- [x] DX measurement (TypeScript misuse tests, API consistency, docs research) → `docs/results/2026-03-04/dx-evidence.md`
+- [x] Theming & Customization measurement → `docs/results/2026-03-04/theming-evidence.md`
+- [x] Ecosystem & Community measurement → `docs/results/2026-03-04/ecosystem-evidence.md`
+- [x] Internationalization measurement → `docs/results/2026-03-04/i18n-evidence.md`
+- [ ] React Profiler interaction benchmark scripts (deferred — TBT used as proxy)
 
-### Phase 4 — Results & Documentation
-- [ ] Run all measurements, store artifacts in `docs/results/`
-- [ ] Synthesize comparison table
+### Phase 4 — Results & Documentation (current focus)
+- [x] Run all measurements, store artifacts in `docs/results/2026-03-04/`
+- [x] Synthesize comparison table → `docs/thesis/results-chapter.md`
+- [ ] Write remaining thesis chapters (a11y, DX, theming, ecosystem, i18n)
 - [ ] Final README update
 
 ---
@@ -131,6 +138,13 @@ These block any work that violates them:
 ### Prompting pattern for parity work
 
 > "Implement [feature] for dashboard-antd that matches the props and behavior of the MUI version at `apps/dashboard-mui/src/[path]`. Use AntD tokens from the theme adapter and keep identical DOM roles and aria attributes."
+
+### When guiding the user through measurement tasks
+
+- **Never let required steps be skipped.** If a checklist item requires data the user hasn't provided, stop and explicitly ask for it before moving on.
+- If the user gives an incomplete answer (e.g. checks one app but not all three, skips a route, avoids a tool), call it out directly and ask for the missing information.
+- If the user asks "do I have to do this?" about a required measurement step — the answer is always yes. Explain why and guide them through it.
+- Do not fill in checklist items with assumptions or axe-derived data when the item explicitly requires manual observation.
 
 ---
 

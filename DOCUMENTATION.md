@@ -64,7 +64,7 @@ Root `package.json` workspace definition:
 | vitest | 3.2.4 |
 | eslint | 9.x |
 
-Planned shared utility libraries (not yet installed):
+Shared utility libraries (installed in all 3 apps):
 - `@tanstack/react-table` — sortable/filterable table
 - `@dnd-kit/core` — kanban drag and drop
 - `recharts` — line and bar charts
@@ -277,11 +277,25 @@ import { highlightKeys } from "@shared/src/data/homepage.data";
 
 ---
 
-## 12. Measurement Infrastructure (planned)
+## 12. Measurement Infrastructure (Phase 3 complete)
 
 | Tool | Purpose | Output location |
 |---|---|---|
-| Lighthouse CI (3 runs, median) | Core Web Vitals, performance score | `docs/results/<date>/` |
-| source-map-explorer | JS bundle composition | `docs/bundles/` |
-| Playwright + @axe-core/playwright | Automated a11y per app | `docs/a11y-checklist.md` |
-| Manual NVDA + WCAG 2.1 AA checklist | Assistive technology testing | `docs/a11y-checklist.md` |
+| Lighthouse CI (`@lhci/cli`, 3 runs, median) | Core Web Vitals, performance score | `docs/lighthouse/` |
+| rollup-plugin-visualizer | JS bundle composition | `docs/bundles/summary.md` |
+| @axe-core/cli (HeadlessChrome 145) | Automated a11y — 9 URLs | `docs/results/2026-03-04/axe-summary.md` |
+| Manual WCAG 2.1 AA checklist + VoiceOver | Assistive technology testing | `docs/a11y-checklist.md` |
+
+## 13. Final Scores (Phase 3 output)
+
+All measurements completed 2026-03-04 to 2026-03-06.
+
+| Library | Score | Rank |
+|---|---|---|
+| MUI v7 | 7.83 | 1 |
+| Ant Design v5 | 6.38 | 2 |
+| Chakra UI v3 | 5.57 | 3 |
+
+Per-criterion scores and full rationale: `docs/thesis/results-chapter.md`
+Raw evidence: `docs/results/2026-03-04/` (axe-summary, dx-evidence, theming-evidence, ecosystem-evidence, i18n-evidence)
+Performance chapter: `docs/thesis/performance-chapter.md`

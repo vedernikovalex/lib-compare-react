@@ -18,7 +18,8 @@
     "dev:all": "concurrently \"yarn workspace dashboard-mui dev\" \"yarn workspace dashboard-antd dev\" \"yarn workspace dashboard-chakra dev\"",
     "preview:all": "concurrently \"yarn workspace dashboard-antd preview\" \"yarn workspace dashboard-chakra preview\" \"yarn workspace dashboard-mui preview\"",
     "lhci:collect": "lhci collect",
-    "lhci:report": "lhci open"
+    "lhci:report": "lhci open",
+    "test:a11y": "node scripts/axe-scan.mjs"
   },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",

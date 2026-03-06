@@ -69,5 +69,8 @@ docs/plans/
 docs/lighthouse/**/lhr-*.html
 docs/lighthouse/**/lhr-*.json
 
+# axe-core raw JSON reports (generated — keep only summary files)
+docs/results/**/axe/*.json
+
 # bundle analysis html reports (generated, large)
 docs/bundles/
